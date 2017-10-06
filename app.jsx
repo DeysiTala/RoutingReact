@@ -102,6 +102,18 @@ class Repos extends React.Component {
           name: "How to Make a Website",
           texto: "If you’ve never built a website before and you have no coding or design experience, this is the place to start. In this project, we learn how to build a modern portfolio website for desktops, tablets, and mobile devices. We start with basic HTML and CSS syntax.Next, we learn how to build custom web pages with an image gallery and contact page. Finally, we walk through how to share a website live on the web."
 
+        },
+        {
+          image: 'https://achievement-images.teamtreehouse.com/bagdes_html_howtobuildawebsite_stage02.png',
+          name: "How to Make a Website",
+          texto: "If you’ve never built a website before and you have no coding or design experience, this is the place to start. In this project, we learn how to build a modern portfolio website for desktops, tablets, and mobile devices. We start with basic HTML and CSS syntax.Next, we learn how to build custom web pages with an image gallery and contact page. Finally, we walk through how to share a website live on the web."
+
+        },
+        {
+          image: 'https://achievement-images.teamtreehouse.com/bagdes_html_howtobuildawebsite_stage02.png',
+          name: "How to Make a Website",
+          texto: "If you’ve never built a website before and you have no coding or design experience, this is the place to start. In this project, we learn how to build a modern portfolio website for desktops, tablets, and mobile devices. We start with basic HTML and CSS syntax.Next, we learn how to build custom web pages with an image gallery and contact page. Finally, we walk through how to share a website live on the web."
+
         }
         ].map((item, index) => {
           return <li key={index}> {item} </li>
@@ -192,7 +204,7 @@ class App extends React.Component {
     }
     return (
       <div>
-        <header>App</header>{' '}
+        <header>
         <menu >
           <ul className="text-right">
             <li>
@@ -210,6 +222,7 @@ class App extends React.Component {
             </li>
           </ul>{' '}
         </menu>
+        </header>{' '}
         {
           propsForRepos ?
             <Child route={propsForRepos} />
