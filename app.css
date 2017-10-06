@@ -1,6 +1,11 @@
 body {
   margin: 0;
-  font: 16px/1 sans-serif;
+ 
+    color: #576366;
+    background: #5fcf80;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+
 }
 
 menu ul{
@@ -38,4 +43,20 @@ ul {
 }
 .main-content {
     padding: 1em 2em;
+}
+.teacher-img{
+  width: 350px;
+  border-radius: .3em;
+}
+
+.container {
+  width: 95%;
+  max-width: 780px;
+  padding-bottom: 2em;
+  margin: 0 auto 2em;
+  background: #fff;
+  border-radius: .5em;
+  -webkit-box-shadow: 0 3px rgba(0,0,0,.1);
+  box-shadow: 0 3px rgba(0,0,0,.1);
+  overflow: hidden;
 }
