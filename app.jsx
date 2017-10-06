@@ -1,25 +1,4 @@
-let PLAYERS = [
-  {
-    name: "Jim Hoskins",
-    score: 31,
-    id: 1,
-  },
-  {
-    name: "Andree Hoskins",
-    score: 35,
-    id: 2,
-  },
-  {
-    name: "Alena Hoskins",
-    score: 42,
-    id: 3,
-  },
-  {
-    name: "Alena Hoskins",
-    score: 42,
-    id: 4,
-  },
-];
+
 
 'using strict';
 //import React from "react";
@@ -27,172 +6,189 @@ let PLAYERS = [
 
 
 
-class Timer extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      date: 0
-    }
-  }
-  render() {
-    const { title } = this.props;
-    const start = (e) => {
-      if(e.target.textContent == "start")
-        {
-          e.target.textContent = "stop";
-        }
-        else
-          {
-            (e.target.textContent = "start")
-          }     
-      this.startTimer();
+class Home extends React.Component {
+	render() {
+		return (
+			<div className="main-content home">
+				<h2>Front End Course Directory</h2>
+				<p>This fun directory is a project for the <em>React Router Basics</em> course on Treehouse.</p>
+				<p>Learn front end web development and much more! This simple directory app offers a preview of our course
+					library. Choose from many hours of content, from HTML to CSS to JavaScript. Learn to code and get the
+					skills you need to launch a new career in front end web development.</p>
+				<p>We have thousands of videos created by expert teachers on web design and front end development. Our
+					library is continually refreshed with the latest on web technology so you will never fall behind.</p>
+				<hr/>
 
-    }
-    const stop = (e) => {
-      this.stopTimer();
-    }
-    const reset = (e) => {
-      this.resetTimer();
-    }
-    return (
-      <div>
-        <h2> {title} </h2>
-
-
-        <button onClick={start}> start </button>
-        
-        <button onClick={reset}> reset </button>
-
-        <p> {this.state.date}</p>
-
-      </div>
-    );
-  }
-  // componentDidMount
-  startTimer() {
-    this.timer = setInterval(() => {
-      this.setState({
-        date: this.state.date + 1
-      });
-    }, 1000);
-
-    //
-   
-  }
-  //componentWillUnmount
-  stopTimer() {
-    clearInterval(this.timer);
- 
-  }
-  resetTimer() {
-    clearInterval(this.timer);
-    this.setState({
-      date: 0
-    });
-  }
+			</div>
+		);
+	}
 }
 
-
-class Modal {
-  constructor() {
-
-    this.inputValue = null;
-    this.render = undefined;
-    this.player = PLAYERS;
-    this.callback = null;
-  }
-
-
-  subscribe(render) {
-    this.callback = render;
-  }
-
-  notify() {
-    this.callback();
-  }
-  inform() {
-    console.log(this.other.map(e => e.text));
-    this.render();
-  }
-  addPlayer(text) {
-    this.other.push({
-      id: Utils.uuid(),
-      text: text,
-      completed: false
-    });
-    this.inform();
-  }
-  updatePlayer(index, todo) {
-    this.other[index] = todo;
-    this.inform();
-  }
+class About extends React.Component {
+	render() {
+		return (
+			<div className="main-content">
+				<h2>About</h2>
+				<p>The front end course directory lists many of the courses we teach on HTML, CSS, JavaScript and more! Be sure to
+					visit the Teachers section to view a list of our talented teachers. Or visit the Courses section and select a
+					topic -- HTML, CSS, or JavaScript -- to see a list of our courses.</p>
+			</div>
+		);
+	}
 }
 
-
-
-
-const Header = (props) => {
-  let points = props.players.map((e) => e.score).reduce((a, b) => { return a + b });
-  return (
-    <div className="header">
-
-      <table className="stats">
-        <tr><td>PLAYERS:</td>{props.players.length}</tr>
-        <tr><td>TOTAL:</td>{points}</tr>
-      </table>
-      <h1>SCOREBOARD</h1>
-
-      <div className="stopwatch">
-        <h2>STOPWATCH</h2>
-        <div className="stopwatch-time" id="contador">
-          <Timer />
-        </div>
-      </div>
-    </div>
-  )
-}
-const PlayerList = (props) => {
-  return (<div>{
-    props.players.map((data, index) => {
-      return (
-        <div className="player">
-          <div className="player-name">{data.name}</div>
-          <div className="player-socore counter">
-            <button className="counter-action decrement btn">-</button>
-            <p className="counter-score">{data.score}</p>
-            <button className="counter-action increment btn">+</button>
+class Teachers extends React.Component{
+  render(){
+    return(
+      <div className="main-content">
+        <h2>Teachers</h2>
+        <ul className="grupo">
+          <li className="teacher">
+            <img className="teacher-img" src="http://treehouse-code-samples.s3.amazonaws.com/bootstrap-4/img/angie.png"/>
+            <h3>Angie McAngular</h3>
+            <p>Angie is a web developer and teacher who is passionate 
+              about building scalable, data driven web apps, especially 
+              ones that address old problems with new tech!</p>
+          </li>
+          <li className="teacher">
+      <img src="http://treehouse-code-samples.s3.amazonaws.com/bootstrap-4/img/nodestradamus.png"/>
+      <h3>NodeStradamus</h3>
+      <p>'NodeStra' is a software engineer and philosopher trying to leave
+         the world better than he found it. He codes for non-profits, eCommerce, 
+         and large-scale web apps.</p>
+          </li>
+          </ul>
           </div>
-        </div>
-
-      )
-    })} </div>)
-}
-
-let PlayerForm = React.createClass({
-  render: function () {
-    return (
-      <div className="add-player-form">
-        <form>
-          <p><input type="text" placeholder="ENTER A NAME"></input></p>
-          <p><input type="submit" value="Add Player"></input></p>
-        </form>
-      </div>
-    )
+            );
   }
-})
-
-
-const Application = ({ title, players }) => {
-  return (
-    <div className="scoreboard">
-      <Header players={players} />
-      <PlayerList players={players} />
-      <PlayerForm />
-    </div>
-  );
 }
 
+class Repos extends React.Component {
+	render() {
+		const {route} = this.props;
+		let CurrentList = null;
+		switch (route) {
+
+			case 'css':
+				CurrentList = ['How to Make a CSS', 'HTML CSS'].map( (item, index) => {
+					return <li key = {index}> {item} </li>
+				});
+				break;
+			case 'javascript':
+				CurrentList = ['How to Make a JS', 'HTML JS'].map( (item, index) => {
+					return <li key = {index}> {item} </li>
+				});
+				break;
+			default: //'html'
+				CurrentList = ['How to Make a Website', 'HTML Forms'].map( (item, index) => {
+					return <li key = {index}> {item} </li>
+				});
+				break;
+		}
+		return (
+			<div className="main-content courses">
+				<div className="course-header group">
+					<h2>Courses</h2>
+					<ul className="course-nav">
+						<li><a href='#/repos/html'>HTML</a></li>
+						<li><a href='#/repos/css'>CSS</a></li>
+						<li><a href='#/repos/javascript'>JavaScript</a></li>
+					</ul>
+
+					<ul>
+						{CurrentList}
+					</ul>
+				</div>
+
+				{/* Write routes here... */}
+			</div>
+		);
+	}
+}
+
+class App extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state ={
+			route: window.location.hash.substr(1)
+		};
+	}
+	//  $(document).ready ()
+	componentDidMount() {
+		window.addEventListener('hashchange', () => {
+			//<a href="#/about">About</a>
+			//<li><a href='#/repos/html'>HTML</a></li>
+			console.log ( window.location.hash.substr(1) );
+
+			this.setState({
+				route: window.location.hash.substr(1)
+			});
+		});
+	}
+	render() {
+		let Child;
+		let propsForRepos = null;
+		switch (this.state.route) {
+      case '/home':
+      Child = Home;
+      break;
+			case '/about':
+				Child = About;
+        break;
+      case '/teachers':
+      Child = Teachers;
+      break;
+			case '/repos':
+				Child = Repos;
+				break;
+			case '/repos/html':
+				Child = Repos;
+				propsForRepos = 'html';
+				break;
+			case '/repos/css':
+				Child = Repos;
+				propsForRepos = 'css';
+				break;
+			case '/repos/javascript':
+				Child = Repos;
+				propsForRepos = 'javascript';
+				break;
+			default:
+				Child = Home;
+		}
+		return (
+         <div>
+            <header>App</header>{' '}
+            <menu>
+               <ul>
+                 <li>
+                   <a href="#/home">Home</a>
+
+                 </li>{''}
+                  <li>
+                     <a href="#/about">About</a>
+                  </li>{' '}
+                  <li>
+                    <a href="#/teachers">Teachers</a>
+                    </li>{' '}
+                  <li>
+                     <a href="#/repos">Courses</a>
+                  </li>
+               </ul>{' '}
+            </menu>
+	         {
+	         	propsForRepos?
+			         <Child route = {propsForRepos} />
+		         :
+			         <Child />
+	         }
+         </div>
+		);
+	}
+}
+
+ReactDOM.render(<App/>,
+  document.getElementById("container"));
 
 
-
-ReactDOM.render(<Application title="Scoreboard" players={PLAYERS} />, document.getElementById('container'));
+//export default App;
